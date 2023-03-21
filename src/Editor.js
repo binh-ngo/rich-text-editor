@@ -1,5 +1,5 @@
-import React from 'react';
-import clsx from 'clsx';
+import React from "react";
+import clsx from "clsx";
 import {
   $getRoot,
   $getSelection,
@@ -8,15 +8,15 @@ import {
   FORMAT_ELEMENT_COMMAND,
   UNDO_COMMAND,
   REDO_COMMAND,
-} from 'lexical';
-import { LexicalComposer } from '@lexical/react/LexicalComposer';
-import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
-import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
-import { ContentEditable } from '@lexical/react/LexicalContentEditable';
-import { OnChangePlugin } from '@lexical/react/LexicalOnChangePlugin';
-import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin';
-import { mergeRegister } from '@lexical/utils';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+} from "lexical";
+import { LexicalComposer } from "@lexical/react/LexicalComposer";
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
+import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
+import { ContentEditable } from "@lexical/react/LexicalContentEditable";
+import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
+import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
+import { mergeRegister } from "@lexical/utils";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function onChange(state) {
   state.read(() => {
@@ -37,14 +37,14 @@ export const Editor = () => {
           theme: {
             // ltr: 'ltr',
             // rtl: 'rtl',
-            paragraph: 'mb-1',
-            rtl: 'text-right',
-            ltr: 'text-left',
+            paragraph: "mb-1",
+            rtl: "text-right",
+            ltr: "text-left",
             text: {
-              bold: 'font-bold',
-              italic: 'italic',
-              underline: 'underline',
-              strikethrough: 'line-through',
+              bold: "font-bold",
+              italic: "italic",
+              underline: "underline",
+              strikethrough: "line-through",
             },
           },
           onError(error) {
@@ -55,11 +55,11 @@ export const Editor = () => {
         <Toolbar />
         <RichTextPlugin
           contentEditable={
-            <ContentEditable className="min-h-[450px] outline-none py-[15px] px-2.5 resize-none overflow-hidden text-ellipsis" />
+            <ContentEditable className="min-h-[450px] outline-none py-[40px] px-2.5 resize-none overflow-hidden text-ellipsis" />
           }
           placeholder={
-            <div className="absolute top-[15px] left-[10px] pointer-events-none select-none">
-              Enter some text...
+            <div className="absolute top-[40px] left-[10px] pointer-events-none select-none">
+              Enter text here...
             </div>
           }
         />
@@ -81,10 +81,10 @@ const Toolbar = () => {
     const selection = $getSelection();
 
     if ($isRangeSelection(selection)) {
-      setIsBold(selection.hasFormat('bold'));
-      setIsItalic(selection.hasFormat('italic'));
-      setIsStrikethrough(selection.hasFormat('strikethrough'));
-      setIsUnderline(selection.hasFormat('underline'));
+      setIsBold(selection.hasFormat("bold"));
+      setIsItalic(selection.hasFormat("italic"));
+      setIsStrikethrough(selection.hasFormat("strikethrough"));
+      setIsUnderline(selection.hasFormat("underline"));
     }
   }, [editor]);
 
@@ -99,14 +99,14 @@ const Toolbar = () => {
   }, [updateToolbar, editor]);
 
   return (
-    <div className="fixed z-20 shadow bottom-8 left-1/2 transform -translate-x-1/2 min-w-52 h-10 px-2 py-2 bg-[#1b2733] mb-4 space-x-2 flex items-center">
+    <div className="fixed z-20 shadow left-1/2 -translate-x-1/2 min-w-52 h-10 px-2 bg-[#1b2733] space-x-2 flex items-center">
       <button
         className={clsx(
-          'px-1 hover:bg-gray-700 transition-colors duration-100 ease-in',
-          isBold ? 'bg-gray-700' : 'bg-transparent'
+          "px-1 hover:bg-gray-700 transition-colors duration-100 ease-in",
+          isBold ? "bg-gray-700" : "bg-transparent"
         )}
         onClick={() => {
-          editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'bold');
+          editor.dispatchCommand(FORMAT_TEXT_COMMAND, "bold");
         }}
       >
         <FontAwesomeIcon
@@ -116,11 +116,11 @@ const Toolbar = () => {
       </button>
       <button
         className={clsx(
-          'px-1 hover:bg-gray-700 transition-colors duration-100 ease-in',
-          isStrikethrough ? 'bg-gray-700' : 'bg-transparent'
+          "px-1 hover:bg-gray-700 transition-colors duration-100 ease-in",
+          isStrikethrough ? "bg-gray-700" : "bg-transparent"
         )}
         onClick={() => {
-          editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'strikethrough');
+          editor.dispatchCommand(FORMAT_TEXT_COMMAND, "strikethrough");
         }}
       >
         <FontAwesomeIcon
@@ -130,11 +130,11 @@ const Toolbar = () => {
       </button>
       <button
         className={clsx(
-          'px-1 hover:bg-gray-700 transition-colors duration-100 ease-in',
-          isItalic ? 'bg-gray-700' : 'bg-transparent'
+          "px-1 hover:bg-gray-700 transition-colors duration-100 ease-in",
+          isItalic ? "bg-gray-700" : "bg-transparent"
         )}
         onClick={() => {
-          editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'italic');
+          editor.dispatchCommand(FORMAT_TEXT_COMMAND, "italic");
         }}
       >
         <FontAwesomeIcon
@@ -144,11 +144,11 @@ const Toolbar = () => {
       </button>
       <button
         className={clsx(
-          'px-1 hover:bg-gray-700 transition-colors duration-100 ease-in',
-          isUnderline ? 'bg-gray-700' : 'bg-transparent'
+          "px-1 hover:bg-gray-700 transition-colors duration-100 ease-in",
+          isUnderline ? "bg-gray-700" : "bg-transparent"
         )}
         onClick={() => {
-          editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'underline');
+          editor.dispatchCommand(FORMAT_TEXT_COMMAND, "underline");
         }}
       >
         <FontAwesomeIcon
@@ -161,10 +161,10 @@ const Toolbar = () => {
 
       <button
         className={clsx(
-          'px-1 bg-transparent hover:bg-gray-700 transition-colors duration-100 ease-in'
+          "px-1 bg-transparent hover:bg-gray-700 transition-colors duration-100 ease-in"
         )}
         onClick={() => {
-          editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'left');
+          editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "left");
         }}
       >
         <FontAwesomeIcon
@@ -174,10 +174,10 @@ const Toolbar = () => {
       </button>
       <button
         className={clsx(
-          'px-1 bg-transparent hover:bg-gray-700 transition-colors duration-100 ease-in'
+          "px-1 bg-transparent hover:bg-gray-700 transition-colors duration-100 ease-in"
         )}
         onClick={() => {
-          editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'center');
+          editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "center");
         }}
       >
         <FontAwesomeIcon
@@ -187,10 +187,10 @@ const Toolbar = () => {
       </button>
       <button
         className={clsx(
-          'px-1 bg-transparent hover:bg-gray-700 transition-colors duration-100 ease-in'
+          "px-1 bg-transparent hover:bg-gray-700 transition-colors duration-100 ease-in"
         )}
         onClick={() => {
-          editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'right');
+          editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "right");
         }}
       >
         <FontAwesomeIcon
@@ -200,10 +200,10 @@ const Toolbar = () => {
       </button>
       <button
         className={clsx(
-          'px-1 bg-transparent hover:bg-gray-700 transition-colors duration-100 ease-in'
+          "px-1 bg-transparent hover:bg-gray-700 transition-colors duration-100 ease-in"
         )}
         onClick={() => {
-          editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'justify');
+          editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "justify");
         }}
       >
         <FontAwesomeIcon
@@ -216,7 +216,7 @@ const Toolbar = () => {
 
       <button
         className={clsx(
-          'px-1 bg-transparent hover:bg-gray-700 transition-colors duration-100 ease-in'
+          "px-1 bg-transparent hover:bg-gray-700 transition-colors duration-100 ease-in"
         )}
         onClick={() => {
           editor.dispatchCommand(UNDO_COMMAND);
@@ -229,7 +229,7 @@ const Toolbar = () => {
       </button>
       <button
         className={clsx(
-          'px-1 bg-transparent hover:bg-gray-700 transition-colors duration-100 ease-in'
+          "px-1 bg-transparent hover:bg-gray-700 transition-colors duration-100 ease-in"
         )}
         onClick={() => {
           editor.dispatchCommand(REDO_COMMAND);
@@ -243,4 +243,3 @@ const Toolbar = () => {
     </div>
   );
 };
-
