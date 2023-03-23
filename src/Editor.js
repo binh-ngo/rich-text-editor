@@ -31,7 +31,8 @@ export const Editor = () => {
   const initialConfig = {};
 
   return (
-    <div className="bg-white relative rounded-sm shadow-sm border border-gray-200">
+    <div>
+    <div className="bg-white relative rounded-sm shadow-sm border border--200">
       <LexicalComposer
         initialConfig={{
           theme: {
@@ -67,6 +68,9 @@ export const Editor = () => {
         <HistoryPlugin />
       </LexicalComposer>
     </div>
+      <button variant="primary">Post to Dev.to</button>{' '}
+      <button variant="danger">Discard</button>{' '}
+</div>
   );
 };
 
@@ -99,6 +103,7 @@ const Toolbar = () => {
   }, [updateToolbar, editor]);
 
   return (
+    // Toolbar
     <div className="fixed z-20 shadow left-1/2 -translate-x-1/2 min-w-52 h-10 px-2 bg-[#1b2733] space-x-2 flex items-center">
       <button
         className={clsx(
