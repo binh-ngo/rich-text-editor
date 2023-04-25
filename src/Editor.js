@@ -1,22 +1,22 @@
 import React from "react";
-import clsx from "clsx";
-import {
-  $getRoot,
-  $getSelection,
-  $isRangeSelection,
-  FORMAT_TEXT_COMMAND,
-  FORMAT_ELEMENT_COMMAND,
-  UNDO_COMMAND,
-  REDO_COMMAND,
-} from "lexical";
+// import clsx from "clsx";
+// import {
+//   // $getRoot,
+//   // $getSelection,
+//   // $isRangeSelection,
+//   // FORMAT_TEXT_COMMAND,
+//   // FORMAT_ELEMENT_COMMAND,
+//   // UNDO_COMMAND,
+//   // REDO_COMMAND,
+// } from "lexical";
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
+// import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
 import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
-import { mergeRegister } from "@lexical/utils";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { mergeRegister } from "@lexical/utils";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import editorConfig from "./editorConfig";
 
 import { AutoFocusPlugin } from "@lexical/react/LexicalAutoFocusPlugin";
@@ -27,17 +27,18 @@ import TreeViewPlugin from "./plugins/TreeViewPlugin";
 import AutoLinkPlugin from "./plugins/AutoLinkPlugin";
 import CodeHighlightPlugin from "./plugins/CodeHighlightPlugin";
 import ListMaxIndentLevelPlugin from "./plugins/ListMaxIndentLevelPlugin";
+import "./style.css"
 
-function onChange(state) {
-  state.read(() => {
-    const root = $getRoot();
-    const selection = $getSelection();
+// function onChange(state) {
+//   state.read(() => {
+//     const root = $getRoot();
+//     const selection = $getSelection();
 
-    console.log(selection);
-  });
-}
+//     console.log(selection);
+//   });
+// }
 
-export const Editor = (readOnly, onChange, children) => {
+export const Editor = ({readOnly, onChange, children}) => {
   const config = {
     ...editorConfig,
     readOnly,
