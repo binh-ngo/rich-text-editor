@@ -1,33 +1,7 @@
 import React from 'react';
 import { Editor } from './Editor';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import {
-  faBold,
-  faStrikethrough,
-  faItalic,
-  faUnderline,
-  faAlignLeft,
-  faAlignCenter,
-  faAlignRight,
-  faAlignJustify,
-  faRotateLeft,
-  faRotateRight,
-} from '@fortawesome/free-solid-svg-icons';
+
 import './style.css';
-
-library.add(
-  faBold,
-  faStrikethrough,
-  faItalic,
-  faUnderline,
-  faAlignLeft,
-  faAlignRight,
-  faAlignCenter,
-  faAlignJustify,
-  faRotateLeft,
-  faRotateRight
-);
-
 export default function App() {
   return (
     <div>
